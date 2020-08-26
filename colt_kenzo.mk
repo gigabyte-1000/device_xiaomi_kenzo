@@ -13,22 +13,24 @@
 # limitations under the License.
 #
 
+TARGET_BOOT_ANIMATION_RES := 1080x1920
+# Inherit some common Colt stuff.
+$(call inherit-product, vendor/colt/config/common.mk)
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from kipper device
 $(call inherit-product, device/xiaomi/kenzo/device.mk)
-
-# Inherit some common BlissOS stuff.
-$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
+$(call inherit-product, vendor/colt/config/common_full_phone.mk)
 
 
 # Set those variables here to overwrite the inherited values.
 BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := kenzo
-PRODUCT_NAME := havoc_kenzo
+PRODUCT_NAME := colt_kenzo
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := Redmi Note 3
 TARGET_VENDOR := Xiaomi
@@ -47,18 +49,10 @@ BUILD_FINGERPRINT=Xiaomi/kenzo/kenzo:6.0.1/MMB29M/V8.2.1.0.MHOCNDL:user/release-
 # Product packages
 TARGET_USE_JELLY := true
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-TARGET_BOOT_ANIMATION_RES := 1080
-
-USE_CCACHE=0
-
-# Havoc build type
-HAVOC_BUILD_TYPE := Official
-ro.havoc.maintainer := Magicxavi
+COLT_BUILD_TYPE := Official
+COLT_DEVICE_MAINTAINER := Gigabyte
 
 PRODUCT_PACKAGES += \
     AdvancedControls \
-    RemovePackages \
-    Recorder
+	Recorder \
+    RemovePackages
